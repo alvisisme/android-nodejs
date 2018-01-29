@@ -1,0 +1,27 @@
+diff --git a/common.gypi b/common.gypi
+index 8a3179d..f144e56 100644
+--- a/common.gypi
++++ b/common.gypi
+@@ -127,8 +127,8 @@
+             'cflags': [ '-fno-omit-frame-pointer' ],
+           }],
+           ['OS == "android"', {
+-            'cflags': [ '-fPIE' ],
+-            'ldflags': [ '-fPIE', '-pie' ]
++            'cflags': [ '-fPIC' ],
++            'ldflags': [ '-fPIC' ]
+           }],
+           ['node_shared=="true"', {
+             'msvs_settings': {
+diff --git a/deps/cares/config/android/ares_config.h b/deps/cares/config/android/ares_config.h
+index 9e6ef3c..1921836 100644
+--- a/deps/cares/config/android/ares_config.h
++++ b/deps/cares/config/android/ares_config.h
+@@ -116,7 +116,7 @@
+ #define HAVE_GETNAMEINFO 1
+
+ /* Define to 1 if you have the getservbyport_r function. */
+-#define HAVE_GETSERVBYPORT_R 1
++//#define HAVE_GETSERVBYPORT_R 1
+
+ /* Define to 1 if you have the `gettimeofday' function. */
