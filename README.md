@@ -13,7 +13,7 @@
   ```
 * 进入docker编译环境
   ```shell
-  docker run -it build-nodejs-for-android
+  docker run -it -v `pwd`:/home/dev/out build-nodejs-for-android
   ```
 * 下载Node
 　```shell
@@ -22,7 +22,7 @@
 * 编译可执行文件
   ```shell
   cd /home/dev/node
-  ./configure --dest-cpu=arm64 --dest-os=android --cross-compiling --without-snapshot --without-inspector --without-intl
+  ./configure --prefix=/home/dev/out --dest-cpu=arm64 --dest-os=android --cross-compiling --without-snapshot --without-inspector --without-intl
   make -j4
   ```
 * 编译动态库
@@ -31,11 +31,11 @@
   git clone https://github.com/alvisisme/build-nodejs-for-android.git
   cp build-nodejs-for-android/node_v6.10.0.patch node/node.patch
   cd /home/dev/node
-  patch -p1 < node.patch
-  ./configure --dest-cpu=arm64 --dest-os=android --cross-compiling --shared --without-snapshot --without-inspector --without-intl 
+  patch -p1 <node.patch
+  ./configure --prefix=/home/dev/out --dest-cpu=arm64 --dest-os=android --cross-compiling --shared --without-snapshot --without-inspector --without-intl 
 	make -j4
   ```
-
+ 
 ## 问题记录
 * 编译动态库时需要将**deps/cares/config/android/ares_config.h**的**HAVE_GETSERVBYPORT_R**宏注释掉
 * 编译动态库时需要将**common.gypi**文件第130,131行的参数全部改为**-fPIC**
