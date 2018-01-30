@@ -1,9 +1,9 @@
 # https://github.com/alvisisme/docker-android-ndk/blob/r13b/Dockerfile
 FROM alvisisme/docker-android-ndk:r13b
 
-ENTRYPOINT ["/bin/bash"]
-CMD ["/home/dev/arm64/bin/build.sh"]
-VOLUME [ "/home/dev/out" ]
+ENTRYPOINT []
+CMD ["/bin/bash","/home/dev/arm64/bin/build.sh"]
+VOLUME ["/home/dev/out"]
 
 ENV PATH=$PATH:/home/dev/arm64/bin
 ENV CC=/home/dev/arm64/bin/aarch64-linux-android-gcc
