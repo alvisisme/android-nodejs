@@ -6,4 +6,4 @@ env:
 build:
 	rm -rf out
 	mkdir -p out
-	docker run -v `pwd`/out:/home/dev/out android-node-build
+	docker run --rm -v `pwd`/out:/home/dev/out android-node-build
