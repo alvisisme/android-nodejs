@@ -6,7 +6,7 @@ git clone --branch v6.10.0 --depth 1 https://github.com/nodejs/node.git /home/de
 cd /home/dev/node-executable
 ./configure --prefix=/home/dev/out/node-executable --dest-cpu=arm64 --dest-os=android --cross-compiling --without-snapshot --without-inspector --without-intl
 make
-make install
+sudo make install
 rm -rf /home/dev/node-executable
 
 # build shared lib
@@ -17,5 +17,5 @@ wget https://raw.githubusercontent.com/alvisisme/android-nodejs/master/node_v6.1
 patch -p1 <node_v6.10.0.patch && \
 ./configure --prefix=/home/dev/out/node-shared-lib --dest-cpu=arm64 --dest-os=android --cross-compiling --shared --without-snapshot --without-inspector --without-intl
 make
-make install
+sudo make install
 rm -rf /home/dev/node-shared-lib
