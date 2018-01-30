@@ -18,7 +18,6 @@ ENV OBJDUMP=/home/dev/arm64/bin/aarch64-linux-android-objdump
 ENV NM=/home/dev/arm64/bin/aarch64-linux-android-nm
 ENV AS=/home/dev/arm64/bin/aarch64-linux-android-as
 
-RUN /usr/local/android-r13b/build/tools/make_standalone_toolchain.py --arch arm64 --api 21 --stl gnustl --force --install-dir /home/dev/arm64
-# build executable
+RUN /usr/local/android-ndk-r13b/build/tools/make_standalone_toolchain.py --arch arm64 --api 21 --stl gnustl --force --install-dir /home/dev/arm64
 RUN wget https://raw.githubusercontent.com/alvisisme/android-nodejs/master/build.sh -O /home/dev/arm64/bin
   

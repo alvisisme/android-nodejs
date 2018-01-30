@@ -1,5 +1,5 @@
 # build nodejs for android
-编译Node为Android　arm64架构下的可执行文件和动态库．
+编译Node为Android arm64架构下的可执行文件和动态库．
 
 ## 测试环境
 * ubuntu16.04(docker)
