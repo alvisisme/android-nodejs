@@ -1,0 +1,9 @@
+version: '2'
+services:
+  android-build-nodejs:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: android-build-nodejs:v6.10.0
+    volumes:
+      - .:/home/dev/out

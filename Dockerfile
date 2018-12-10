@@ -1,9 +1,8 @@
-# https://github.com/alvisisme/docker-android-ndk/blob/r13b/Dockerfile
 FROM alvisisme/docker-android-ndk:r13b
+LABEL maintainer="zlzhao<alvisisme@163.com>"
 
-ENTRYPOINT []
-CMD ["/bin/bash","/home/dev/arm64/bin/build.sh"]
-VOLUME ["/home/dev/out"]
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get update && sudo apt-get install -y binutils
+RUN /usr/local/android-ndk-r13b/build/tools/make_standalone_toolchain.py --arch arm64 --api 21 --stl gnustl --force --install-dir /home/dev/arm64
 
 ENV PATH=$PATH:/home/dev/arm64/bin
 ENV CC=/home/dev/arm64/bin/aarch64-linux-android-gcc
@@ -18,7 +17,7 @@ ENV OBJDUMP=/home/dev/arm64/bin/aarch64-linux-android-objdump
 ENV NM=/home/dev/arm64/bin/aarch64-linux-android-nm
 ENV AS=/home/dev/arm64/bin/aarch64-linux-android-as
 
-RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y binutils
-RUN /usr/local/android-ndk-r13b/build/tools/make_standalone_toolchain.py --arch arm64 --api 21 --stl gnustl --force --install-dir /home/dev/arm64
-RUN wget https://raw.githubusercontent.com/alvisisme/android-nodejs/master/build.sh -O /home/dev/arm64/bin/build.sh
-  
+USER root
+WORKDIR /home/dev/out
+CMD ["/bin/bash","/home/dev/out/build.sh"]
+VOLUME ["/home/dev/out"]
