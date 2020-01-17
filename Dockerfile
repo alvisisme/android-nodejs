@@ -4,7 +4,7 @@ RUN /bin/bash /android-ndk-r13b/build/tools/make-standalone-toolchain.sh \
     --arch=arm64 \
     --platform=android-21 \
     --toolchain=aarch64-linux-android-4.9 \
-    --stl=libc++ \
+    --stl=gnustl \
     --install-dir=/opt/arm64-android-toolchain
 
 ENV PATH=$PATH:/opt/arm64-android-toolchain/bin

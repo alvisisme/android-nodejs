@@ -4,7 +4,7 @@ env:
 	docker-compose build
 
 build:
-	docker-compose run android-build-nodejs
+	docker-compose run -it android-build-nodejs
 
 dist:
 	rm -rf dist/*
