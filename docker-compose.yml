@@ -6,4 +6,4 @@ services:
       dockerfile: ./Dockerfile
     image: android-build-nodejs:v6.10.0
     volumes:
-      - .:/home/dev/out
+      - .:/out
