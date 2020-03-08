@@ -2,7 +2,7 @@
 FROM alvisisme/android-ndk:r13b
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -y install wget make binutils
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install wget make binutils patch
 
 RUN /bin/bash /android-ndk-r13b/build/tools/make-standalone-toolchain.sh \
     --arch=arm64 \
