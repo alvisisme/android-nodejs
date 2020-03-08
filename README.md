@@ -1,17 +1,50 @@
-# build nodejs for android
-编译Node为Android arm64架构下的可执行文件和动态库．
+# nodejs-for-android
 
-## 测试环境
-* ubuntu16.04(docker)
+[![Build Status](https://img.shields.io/travis/com/alvisisme/android-nodejs?style=flat-square)](https://travis-ci.com/alvisisme/android-nodejs)
+
+编译nodejs至android平台arm64-v8a架构。
+
+本工程仅编译可执行文件和动态库。
+
+## 目录
+
+- [背景](#背景)
+- [安装](#安装)
+- [用法](#用法)
+- [维护人员](#维护人员)
+- [贡献参与](#贡献参与)
+- [许可](#许可)
+
+## 背景
+
+编译环境
+
+* Ubuntu 18.04.4 LTS amd64
 * android ndk r13b
 * node v6.10.0
 
-## 编译步骤
-* 执行命令
-  ```shell
-  make
-  ```
-## 问题记录
-* 编译动态库时需要将 **deps/cares/config/android/ares_config.h** 的 **HAVE_GETSERVBYPORT_R** 宏注释掉，见patch文件。
-* 编译动态库时需要将 **common.gypi** 文件第130,131行的参数全部改为 **-fPIC** ，见patch文件。
+## 安装
 
+将编译成功后生成的**dist**目录下对应头文件和静态库引入。
+
+## 用法
+
+推荐使用 docker 和 docker-compose 进行编译
+
+```bash
+docker-compose up --build
+```
+
+编译后的文件位于 **build** 目录
+
+## 维护人员
+
+[@Alvis Zhao](https://github.com/alvisisme)
+
+## 贡献参与
+
+欢迎提交PR。
+
+## 许可
+
+© 2020 Alvis Zhao

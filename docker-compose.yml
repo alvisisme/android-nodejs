@@ -1,9 +1,7 @@
 version: '2'
 services:
-  android-build-nodejs:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    image: android-build-nodejs:v6.10.0
+  nodejs-for-android:
+    build: .
+    image: nodejs-for-android-arm64-v8a
     volumes:
-      - .:/out
+      - ./build:/build
