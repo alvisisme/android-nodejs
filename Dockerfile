@@ -11,7 +11,7 @@ RUN /bin/bash /android-ndk-r13b/build/tools/make-standalone-toolchain.sh \
     --stl=gnustl \
     --install-dir=/arm64-android-toolchain
 
-ENV PATH=$PATH:/arm64-android-toolchain/bin
+ENV PATH=/arm64-android-toolchain/bin:$PATH
 ENV CC=/arm64-android-toolchain/bin/aarch64-linux-android-gcc
 ENV CXX=/arm64-android-toolchain/bin/aarch64-linux-android-g++
 ENV LINK=/arm64-android-toolchain/bin/aarch64-linux-android-g++
@@ -29,4 +29,4 @@ COPY build.sh /build.sh
 COPY node_v6.10.0.patch /node_v6.10.0.patch
 VOLUME ["/build"]
 
-ENTRYPOINT ["/bin/bash", "/build.sh"]
+CMD ["/bin/bash", "/build.sh"]
